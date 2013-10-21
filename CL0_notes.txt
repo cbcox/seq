@@ -3,9 +3,9 @@ CL0 Notes
 Purpose: to discuss thoughts and findings regarding CL0 in the seq command implementation
 
 
-2)  From the CL0 spec, it looks like I will need two or three error checks. A check to ensure two arguments are accepted and both are of integer value and a check to make sure the integers are input in ascending order, which will probably be included in the if statement in the main part of this implementation. I don't currently have any concerns or questions but that may change once I get going. :)
+2)  From the CL0 spec, it looks like I will need two or three error checks. A check to ensure two arguments are accepted and both are of integer value and a check to make sure the integers are input in ascending order, which will probably be included in the if statement in the main part of this implementation. I don't currently have any concerns or questions but that may change once I get going. 
 
-3)  I can't work on redmine right now since I was unaware of having an mcecs account or needing to validate it. Hopefully I will get this resolved before 1:30pm on Monday. For now, I will just work with git. I already had a git account, so I got my project local and online repositories created and synced up with a readme file.
+3)  As of Monday at 1pm, I am working on getting redmine working. I had to talk to the cat to get my account going, so I did my assignment on my own git page, github.com/cbcox/seq this is public so anyone can see it. 
 
 4)  This is the first time I have done any unit testing, and I have to say it was great to start thinking about what the program would need and what checks needed to be in the program ahead of time.
 
