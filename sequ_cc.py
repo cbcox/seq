@@ -1,36 +1,123 @@
 #!/usr/bin/python
 #Candace Cox
 #main sequ function file
-#CL0
+#CL1
 
 import sys
+import argparse
 
+#Global Variables
+print_array = []
+
+#---------Functions--------
 #sequence function
-def seq(int1, int2):
-	counter = int(int1, base=10)
-	while counter <= int(int2, base=10):
-		print counter
-		'/n'
+def seq(x, y):
+	counter = x
+	while counter <= y:
+		print_array.append(counter)
 		counter += 1
 
-#initialize user input variables
-int1 = 0
-int2 = 0
+#array print function
+def printseq(print_array):
+	print ('\n'.join(map(str,(print_array)))) 
 
-#take user input
-int1, int2 = raw_input("Please enter two numbers: ").split()
-'/n'
+#format function
+def format():
+	curr_arg = args.format
+	if args.format == "%a":
+		for i in print_array:
+			tempint = print_array[i-1]
+			newint = hex(tempint) 
+			print_array[i-1] = newint
+
+	if args.format == "%e":
+		for i in print_array:
+			tempint = print_array[i-1]
+			newint = "{:e}".format(float(tempint)) 
+			print_array[i-1] = newint
+		
+	if str(args.format).endswith('f'):
+		for i in print_array:
+			tempint = print_array[i-1]
+			newint = curr_arg % tempint 
+			print_array[i-1] = newint
+		
+	if str(args.format).endswith('g'):
+		for i in print_array:
+			tempint = print_array[i-1]
+			newint = curr_arg % tempint 
+			print_array[i-1] = newint
+	
+	if args.format == "%A":
+		for i in print_array:
+			tempint = print_array[i-1]
+			newint = "0x%X" % tempint 
+			print_array[i-1] = newint
+
+	if args.format == "%E":
+		for i in print_array:
+			tempint = print_array[i-1]
+			newint = "{:E}".format(float(tempint)) 
+			print_array[i-1] = newint
+		
+	if str(args.format).endswith('F'):
+		for i in print_array:
+			tempint = print_array[i-1]
+			newint = curr_arg % tempint 
+			print_array[i-1] = newint
+	
+	if str(args.format).endswith('G'):
+		for i in print_array:
+			tempint = print_array[i-1]
+			newint = curr_arg % tempint 
+			print_array[i-1] = newint
+	
+#equalwidth function
+def equalwidth():
+	fillnum = len(str(args.y))
+	for pi in print_array:
+		if len(str(pi)) < fillnum:
+			tempint = print_array[pi-1]
+			newint = str(tempint).zfill(fillnum)
+			print_array[pi-1] = newint
+
+#seperator function
+def seperator():
+	for s in args.seperator:
+		print (str(s).join(map(str,(print_array))))
+
+#------Main Driver------
+#command line parser
+parser = argparse.ArgumentParser(description='Command line sequence arguments.')
+
+#add command line arguments to parser
+parser.add_argument('-v', '--version', action='version', version='%(prog)s CL1')
+parser.add_argument('-f', '--format', action="store", dest="format")
+parser.add_argument('-w', '--equal-width', action="store_true", dest="equalwidth", default=False)
+parser.add_argument('-s', '--seperator', action="store", dest="seperator", nargs=1)
+parser.add_argument("x", type=int)
+parser.add_argument("y", type=int)
+
+args = parser.parse_args()
+
 
 #check user input for errors
-if int1 != 0 and int2 != 0:
-	#http://stackoverflow.com/questions/5424716/python-how-to-check-if-input-is-a-number-given-that-input-always-returns-stri/15554564#15554564
+if args.x != 0 and args.y != 0:
 	try:
-		val = int(int1)
-		val2 = int(int2)
+		val = args.x
+		val2 = args.y
 	except ValueError:
 		print "Please use integers only"
-	if int1 < int2:
-		seq(int1, int2)
+	if args.x < args.y:
+		seq(args.x, args.y)
+		if args.format:
+			format()
+		elif args.equalwidth:
+			equalwidth()
+		if args.seperator:
+			seperator()
+		else:
+			printseq(print_array)
 	else:
 		print "First integer should be less than second integer"
 		sys.exit

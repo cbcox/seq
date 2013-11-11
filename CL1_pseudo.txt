@@ -1,0 +1,157 @@
+Candace Cox
+CL1 Pseudocode
+
+print_array[]
+print "Enter sequential integers first, then needed flags"
+print on console "What would you like to display: "
+args[] = user input arguments	
+//first check if input is correct
+if(user input has at least two variables){
+	if(first two variables are not integers){
+		print on console "Please use integers only"
+		exit
+	}else{
+		if(first arg < second arg){
+			for(i=args[0];i<=args[1];i++){
+				print_array.append(i)
+			}
+			//check rest of array for flags
+			if(array contains > 2 args){
+				if(array contains -f){
+					format(args[])
+				}else if(array contains -w){
+					equalwidth(args[])
+				}	
+				if(array contains -s){
+					separator(args[])
+				}
+				if(array contains -h){
+					help
+				}
+				if(array contains -v){
+					version
+				}
+			}else{
+				seq(args[]);
+				exit
+			}
+		}else{
+			print on console "First integer should be less than second integer"
+			exit
+		}
+	}
+}else{
+	print on console "Please use two arguments"
+	exit
+}
+
+//print sequence function
+function seq(print_array[]){
+	counter = 0
+	while(counter <= print_array.length){
+		print print_array[counter]
+		new line
+		counter++
+	}
+}
+
+//format
+function format(args[], print_array[]){
+	format_specindex = args.index(-f)
+	format_specindex += 1
+	format_specs[format_specindex] = {0 : %a,
+						1 : %e,
+						2 : %f,
+						3 : %*g,
+						4 : %A,
+						5 : %E,
+						6 : %F,
+						7 : %*G,
+	}
+	def %a():
+		for(i=0;i<print_array.length;i++){
+			print_array[i] = "0x%x" % print_array[i]
+		}
+
+	def %e():
+		for(i=0;i<print_array.length;i++){
+			print_array[i] = scientific lowercase
+		}
+
+	def %f():
+		for(i=0;i<print_array.length;i++){
+			print_array[i] = decimal(print_array[i])
+		}
+
+	def %*g():
+		for(i=0;i<print_array.length;i++){
+			fill with digit after %
+			fill by precision of second digit after %
+		}
+
+	def %A():
+		for(i=0;i<print_array.length;i++){
+			print_array[i] = "0x%X" % print_array[i]
+		}
+
+	def %E():
+		for(i=0;i<print_array.length;i++){
+			print_array[i] = scientific uppercase
+		}
+
+	def %F():
+		for(i=0;i<print_array.length;i++){
+			print_array[i] = decimal(print_array[i])
+		}
+
+	def %*G():
+		for(i=0;i<print_array.length;i++){
+			fill with digit after %
+			fill by precision of second digit after %
+		}
+
+}
+
+//equalwidth
+function equalwidth(args[], print_array[]){
+	fill_len = len(str(args[1]))
+	for(i=0;i<=print_array[].length;i++){
+		print_array[i] = n.zfill(fill_len)
+	}
+}
+
+//seperator
+function seperator(args[], print_array[]){
+	for(i=0;i<=args[].length;i++){
+		if(args[i] == "-s"){
+			sep_char = args[i++]
+			break
+		}else{
+			continue
+		}
+	}
+	sep_counter = args[0]
+	printarray_counter = 0
+	while(sep_counter <= args[1]){
+		print printarray[sep_counter]
+		print sep_char
+		sep_counter++
+	}
+}
+
+//print help
+function help(){
+	print "Enter sequential integers first then flags"
+	print "Flags: "
+	print "-f - format, use this flag followed by "format string" to go before number output"
+	print "-s - seperator, follow this flag with a character you would like to see between integers, also outputs to one line"
+	print "-w - equal-width, this flag fills output with zeros so all integers are of the same length"
+	print "-v - seq version"i
+	print "More than one flag may be used at a time"
+}
+
+//print version
+function version(){
+	print "Version CL1"
+	exit
+}
