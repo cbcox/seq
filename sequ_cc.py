@@ -95,8 +95,8 @@ parser.add_argument('-v', '--version', action='version', version='%(prog)s CL1')
 parser.add_argument('-f', '--format', action="store", dest="format")
 parser.add_argument('-w', '--equal-width', action="store_true", dest="equalwidth", default=False)
 parser.add_argument('-s', '--seperator', action="store", dest="seperator", nargs=1)
-parser.add_argument("x", type=int)
-parser.add_argument("y", type=int)
+parser.add_argument("x", type=long)
+parser.add_argument("y", type=long)
 
 args = parser.parse_args()
 
@@ -107,7 +107,7 @@ if args.x != 0 and args.y != 0:
 		val = args.x
 		val2 = args.y
 	except ValueError:
-		print "Please use integers only"
+		print "Please use integers or decimals only"
 	if args.x < args.y:
 		seq(args.x, args.y)
 		if args.format:

@@ -16,3 +16,4 @@ I'm still thinking in terms of C++, so I've been over thinking the solutions a l
 5)Code:
 Python has a lot of great implementation. I was able to use the argsparse function to take the command line arguments. Python also had a lot of built in functions to convert integers to different forms which were very useful. 
 I was afraid that a lot of my pseudocode wouldn't work well with python implementation but it actually was a huge help in writing the final project.
+**Update** I added the floating point functionality which was missing for first turn in.
