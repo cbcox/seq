@@ -6,6 +6,7 @@
 import string
 import sys
 import argparse
+import roman
 
 #Global Variables
 print_array = []
@@ -115,6 +116,7 @@ def pad():
 def padspaces():
 	fill_len = len(str(args.y))
 	for i in print_array:
+		#adds spaces between integers in array
 		tempint = print_array[int(i)-1]
 		newint = (str(i)).rjust((fill_len+3), ' ')
 		print_array[int(i)-1] = newint
@@ -123,6 +125,7 @@ def padspaces():
 #format-word function
 def formatword():
 	print args.formatword
+	#prints long integer sequences
 	if args.formatword == ('arabic'):
 			newx = long(args.x)
 			newy = long(args.y)
@@ -135,6 +138,7 @@ def formatword():
 				newx += newz
 			sys.exit()
 
+	#print sequence of floats
 	if args.formatword == ('floating'):
 			floatx = float(args.x)
 			floaty = float(args.y)
@@ -147,6 +151,7 @@ def formatword():
 				floatx += floatz
 			sys.exit()
 
+	#prints letters in the range specified by the command line args
 	if args.formatword == ('alpha'):
 			lalphax = ord(args.x)
 			lalphay = ord(args.y)
@@ -156,8 +161,9 @@ def formatword():
 				lcounter = int(args.z[0])
 			for number in xrange(lalphax, lalphay+lcounter):
 				print chr(number)
-		
 			sys.exit()
+
+	#same as alpha except for adding .upper() to print
 	if args.formatword == ('ALPHA'):
 			ualphax = ord(args.x)
 			ualphay = ord(args.y)
@@ -168,21 +174,42 @@ def formatword():
 			for number in xrange(ualphax, ualphay+ucounter):
 				print (chr(number).upper())
 			sys.exit()
-			
-	romanmap = [('i',1), ('iv',4), ('v',5), ('ix',9), ('x',10), ('xl',40), ('l',50), ('xc',90), ('c',100), ('cd',400), ('d',500), ('cm',900), ('m',1000)]
-	
-	if args.formatword == ('roman'):
-			print "i'm roman"
-	if args.formatword == ('ROMAN'):
-			print "i'm ROMAN"
 
+	if args.formatword == ('roman'):
+			roman_start = args.x
+			roman_end = args.y
+			int_start = roman.fromRoman(roman_start.upper())
+			int_end = roman.fromRoman(roman_end.upper())
+			print roman_start.lower()
+			while int_start < int_end:
+				int_start += 1
+				roman_start = roman.toRoman(int_start)
+				print roman_start.lower()
+			
+			sys.exit()
+
+	if args.formatword == ('ROMAN'):
+			roman_start = args.x
+			roman_end = args.y
+			int_start = roman.fromRoman(roman_start.upper())
+			int_end = roman.fromRoman(roman_end.upper())
+			print roman_start
+			while int_start < int_end:
+				int_start += 1
+				roman_start = roman.toRoman(int_start)
+				print roman_start
+			
+			sys.exit()
+
+#integer tests for flags that use ints
 def int_test():
+	#check if input is integer
 	try:
 		int(args.x)
 		int(args.y)
 	except ValueError:
 		print "Please use integers or specify -F for format-word"
-	
+	#check input for ascending order
 	if int(args.x) > int(args.y):
 		print "First integer should be less than second integer"
 		sys.exit
@@ -209,7 +236,7 @@ parser.add_argument('-F', '--format-word', dest="formatword", action="store", ch
 
 args = parser.parse_args()
 
-#check user input for errors
+#check for flags used
 if args.formatword:
 	formatword()
 if args.format:
