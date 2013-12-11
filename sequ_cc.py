@@ -124,7 +124,6 @@ def padspaces():
 
 #format-word function
 def formatword():
-	print args.formatword
 	#prints long integer sequences
 	if args.formatword == ('arabic'):
 			newx = long(args.x)
