@@ -15,6 +15,7 @@ alpha_upper = string.ascii_uppercase
 
 #---------Functions--------
 #sequence function
+#prints out all numbers in the range from x to y
 def seq(x, y):
 	xnew = int(x)
 	ynew = int(y)
@@ -29,13 +30,14 @@ def seq(x, y):
 		counter += 1
 
 #array print function
+#array used in the seq function to hold and print the number range
 def printseq(print_array):
 	print ('\n'.join(map(str,(print_array)))) 
 
 #format function
 def format():
 	curr_arg = args.format
-	if args.format == "%a":
+	if args.format == "%a":      #converts and prints number sequence in hex
 		for i in print_array:
 			tempint = print_array[int(i)-1]
 			newint = hex(int(tempint)) 

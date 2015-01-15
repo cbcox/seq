@@ -1,0 +1,17 @@
+Candace Cox
+Seq Program
+CL2 Notes
+
+
+2)  Spec Questions/Comments:
+	The spec seems pretty straight forward. We are just adding additional functionality and new flags to seq.
+
+3)	Tests:
+
+4)	Pseudocode:
+	My pseudocode this time is more like code than english since some of the arguments are similar to ones from CL1. It is heavily commented, though.
+
+5)	Code:
+	For -p, pad, I wasn't sure if it meant that this function should do the same as equal width except with a selected char, or if there should be extra padding. 
+	For example, if you had 1-20, 1-9 would get padded with one char on the left and the rest wouldn't get padded if you went with just equal width. With the other option, they all get padded with the char on the left to be of a certain total length, ::1 - :20. 
+	From the note on -w it seems like it should act like equal width, however, I thought it would look better and more deliberate if it had some extra padding.

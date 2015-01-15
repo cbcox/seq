@@ -1,0 +1,16 @@
+Candace Cox
+CL0 Notes
+Purpose: to discuss thoughts and findings regarding CL0 in the seq command implementation
+
+
+2)  From the CL0 spec, it looks like I will need two or three error checks. A check to ensure two arguments are accepted and both are of integer value and a check to make sure the integers are input in ascending order, which will probably be included in the if statement in the main part of this implementation. I don't currently have any concerns or questions but that may change once I get going. 
+
+3)  As of Monday at 1pm, I am working on getting redmine working. I had to talk to the cat to get my account going, so I did my assignment on my own git page, github.com/cbcox/seq this is public so anyone can see it. 
+	**Update** Thanks to the Cat and my software engineer friend, I got redmine working and was able to upload my files to the repository
+
+4)  This is the first time I have done any unit testing, and I have to say it was great to start thinking about what the program would need and what checks needed to be in the program ahead of time.
+
+5)  The pseudocode is pretty straight forward, I started with the argument checks and then filled out the sequence function itself. This will be my first Python program, so I wrote the pseudocode according to what I might do in any language.
+
+6)  There was one thing I changed from the pseudocode to the real code, and that was the second if statement, in Python you use try exceptions to test if a variable is an int. The link to stack overflow where I found the information on this is in my code. 
+    Overall, Python was very straight forward. I used the documentation online at docs.python.org for a lot of the syntax info as well as tutorialspoint.com/python. The only debugging I had to do was from syntax, which is expected with a new language. The biggest issue I had was from the user input being turned into a string in the seq function. I finally solved it by converting each to base 10 when I called them in the function.   
